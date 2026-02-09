@@ -1,12 +1,20 @@
 
-export interface IBuildPaths {
-    entry: string
-    build: string
-    html: string
+export type IMode = 'production' | 'development';
+
+export interface IPaths {
+    entry: string;
+    build: string;
+    html: string;
 }
 
-export interface IBuildOptions {
-    mode: 'development' | 'production'
-    paths: IBuildPaths
-    isDev: boolean
+export interface IEnv {
+    mode: IMode;
+    port: number;
+}
+
+export interface IOptions {
+    mode: IMode;
+    paths: IPaths;
+    isDev: boolean;
+    port: number;
 }

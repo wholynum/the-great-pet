@@ -1,21 +1,28 @@
-import webpack from "webpack";
+import webpack from 'webpack';
 import {webpackConfig} from "./config/build/webpackConfig";
-import {IBuildPaths} from "./config/build/types/config";
+import {IEnv, IPaths} from "./config/build/types/config";
 import path from "path";
 
-const paths: IBuildPaths = {
-    entry: path.resolve(__dirname, 'src', 'index.ts'),
-    build: path.resolve(__dirname, 'build'),
-    html: path.resolve(__dirname, 'public', 'index.html'),
-}
 
-const mode = 'development'
-const isDev= mode === 'development'
+export default (env: IEnv) => {
 
-const config: webpack.Configuration = webpackConfig({
-    mode,
-    paths,
-    isDev
-})
 
-export default config;
+    const paths: IPaths = {
+        entry: path.resolve(__dirname, 'src', 'index.ts'),
+        build: path.resolve(__dirname, 'build'),
+        html: path.resolve(__dirname, 'public', 'index.html'),
+    }
+
+    const mode = env.mode || 'development';
+    const isDev = mode === 'development';
+    const PORT = env.port || 3000;
+
+    const config: webpack.Configuration = webpackConfig({
+        mode,
+        paths,
+        isDev,
+        port: PORT,
+    })
+
+    return config;
+};

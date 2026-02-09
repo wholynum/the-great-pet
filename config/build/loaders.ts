@@ -2,13 +2,13 @@ import webpack from "webpack";
 
 export function loaders(): webpack.RuleSetRule[] {
 
-    const tsLoader = {
+    const typescriptLoader = {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: 'ts-loader',
         exclude: /node_modules/,
     }
 
     return [
-        tsLoader,
+        typescriptLoader,
     ]
 }

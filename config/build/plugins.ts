@@ -1,9 +1,9 @@
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
-import {IBuildOptions} from "./types/config";
+import {IOptions} from "./types/config";
 
+export function plugins({paths}: IOptions): webpack.WebpackPluginInstance[] {
 
-export function plugins({paths}: IBuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new HTMLWebpackPlugin({
             template: paths.html,
