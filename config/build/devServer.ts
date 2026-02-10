@@ -5,7 +5,8 @@ export function devServer(options: IOptions): DevServerConfiguration {
     return {
         port: options.port,
         open: true,
-        historyApiFallback: true
+        historyApiFallback: true,
+        hot: true
     }
 }
 
