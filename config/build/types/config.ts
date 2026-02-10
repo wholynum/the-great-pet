@@ -1,4 +1,3 @@
-
 export type IMode = 'production' | 'development';
 
 export interface IPaths {

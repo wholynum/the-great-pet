@@ -1,18 +1,15 @@
 import webpack from 'webpack';
-import {webpackConfig} from "./config/build/webpackConfig";
-import {IEnv, IPaths} from "./config/build/types/config";
-import path from "path";
-
+import path from 'path';
+import { webpackConfig } from './config/build/webpackConfig';
+import { IEnv, IPaths } from './config/build/types/config';
 
 export default (env: IEnv) => {
-
-
     const paths: IPaths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
         build: path.resolve(__dirname, 'build'),
         html: path.resolve(__dirname, 'public', 'index.html'),
-        src: path.resolve(__dirname, 'src')
-    }
+        src: path.resolve(__dirname, 'src'),
+    };
 
     const mode = env.mode || 'development';
     const isDev = mode === 'development';
@@ -23,7 +20,7 @@ export default (env: IEnv) => {
         paths,
         isDev,
         port: PORT,
-    })
+    });
 
     return config;
 };
