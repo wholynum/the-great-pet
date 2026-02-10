@@ -4,16 +4,23 @@ import { AppRouter } from "./providers/router";
 import { Navbar } from "widgets/navbar";
 
 import './styles/index.scss'
+import { Sidebar } from "widgets/sidebar";
+import { Suspense } from "react";
 
 const App = () => {
 
-    const {theme, toggleTheme} = useTheme();
+    const {theme} = useTheme();
 
     return (
         <div className={classNames('app', {}, [theme])}>
-            <Navbar/>
-            <AppRouter />
-            <button onClick={toggleTheme} >Toggle theme</button>
+            <Suspense fallback="">
+                <Navbar/>
+                <div className="content-page">
+                    <Sidebar/>
+                    <AppRouter />
+                </div>
+            </Suspense>
+            
         </div>
     );
 };
